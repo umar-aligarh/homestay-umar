@@ -4,9 +4,8 @@ const accountSchema = new mongoose.Schema({
 
     _id: {
         type: String,
-        required: true
+        reqired: true
     }
-
 })
 
 module.exports = mongoose.model("account",accountSchema);
