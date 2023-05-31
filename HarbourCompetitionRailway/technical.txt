@@ -1,0 +1,32 @@
+Database:
+cloudways
+  email: uk.umarkhan1999@gmail.com
+  pass: myDatabase123
+
+
+https://www.npmjs.com/package/mysql
+
+
+
+
+https://webwhiteboard.com/board/9SQFcTXS5Mo9QVCFcnqucunxwlCDMgjV/
+
+https://webwhiteboard.com/board/ZTFDOT9Pxtjc6xVSpVCFkE3UF066pAG9/
+
+mohdhuzam002@gmail.com
+
+mongodb+srv://umarkhan:ZrTH34t9PujHNWZa@cluster0.y1jtalv.mongodb.net/?retryWrites=true&w=majority
+
+
+ZrTH34t9PujHNWZa
+
+
+let db = mongoose.connection;
+
+db.on('error',()=>console.log("Error in Connecting to Database"));
+db.once('open',()=>console.log("Connected to Database"))
+
+bhai main sonai jara hun 
+ 
+kal mongooose thek sai par aunga INSHALLAH
+ ALLAH HAFIZ 
