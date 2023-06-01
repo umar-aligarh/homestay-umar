@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const accountSchema = new mongoose.Schema({
+const bookingSchema = new mongoose.Schema({
 
     _id: {
         type: String,
@@ -9,6 +9,9 @@ const accountSchema = new mongoose.Schema({
     accountId: {
         type: String,
         required: true
+    },
+    roomsBooked: {
+        type: [Number]
     }
 
 })
