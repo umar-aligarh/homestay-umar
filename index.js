@@ -25,7 +25,7 @@ app.set('views',__dirname + '/views');
 
 
 app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
-app.use('/', usersRouter);
+app.use('/users', usersRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/rooms', roomsRouter);
 app.use('/transactions', transactionsRouter);
