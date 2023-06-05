@@ -29,9 +29,13 @@ app.use('/users', usersRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/rooms', roomsRouter);
 app.use('/transactions', transactionsRouter);
-app.use(express.static("public"))
+
+
 let port = "3000"
 
+app.get("/",(req,res)=>{
+     return res.render("home")
+})
 
 // app.post("/",(req,res)=>{
 //     console.log(req.body.phone)
