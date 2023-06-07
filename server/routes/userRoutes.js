@@ -16,11 +16,11 @@ router.route('/login').get((req,res)=>{
     res.render('login');
 })
 
-router.route('/add').post(async (req, res) => {
+router.route('/isExisting').post(async (req, res) => {
     const phone = req.body.phone;
    const p = await account.exists({_id:phone})
     if(p)
-    res.render('welcome')
+    res.render('userHome')
     else 
     {
         const data = {
@@ -28,7 +28,7 @@ router.route('/add').post(async (req, res) => {
             condition :true
                       
         }
-        res.render('signin',{data})
+        res.render('signup',{data})
     }    
   
     // newUser.save()

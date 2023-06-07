@@ -5,7 +5,7 @@ const User = require('../models/bookingsModel');
 // app.set('view engine', 'ejs');
 // app.set('views',__dirname + '/views');
 
-router.route('/add').get((req,res)=>{
+router.route('/new').get((req,res)=>{
     return res.render("booking")
 })
 router.route('/add').post((req, res) => {
