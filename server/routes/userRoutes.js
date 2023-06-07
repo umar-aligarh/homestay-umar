@@ -37,7 +37,7 @@ router.route('/isExisting').post(async (req, res) => {
 
 });
 
-router.route('/newUser').post(async (req,res)=>{
+router.route('/new').post(async (req,res)=>{
     const phone = req.body.phone 
     console.log(phone)
     const password = req.body.password
@@ -47,7 +47,7 @@ router.route('/newUser').post(async (req,res)=>{
     {
          const newUser = new account({_id:phone,password:password})
          await newUser.save()
-         res.render('welcome')
+         res.render('userHome')
     }
     else 
     {

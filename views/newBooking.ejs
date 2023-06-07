@@ -58,16 +58,7 @@
 </head>
 <body>
   <div class="container">
-    <h1><%=data.phone %></h1>
     <form action="/users/new" method="post">
-        <div class="form-group">
-            <label for="phone">phone</label>
-
-                <input type="text" id="phone" name="phone" value=<%= data.phone %>
-                readonly >
-       
-           
-          </div>
       <div class="form-group">
         <label for="password">Create Password</label>
         <input type="password" id="password" name="password" required>
@@ -79,5 +70,6 @@
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
+  <script src="../client/script/newBooking.js"></script> 
 </body>
 </html>
