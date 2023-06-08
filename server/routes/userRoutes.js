@@ -37,7 +37,7 @@ router.route('/isExisting').post(async (req, res) => {
 
 });
 
-router.route('/new').post(async (req,res)=>{
+router.route('/add').post(async (req,res)=>{
     const phone = req.body.phone 
     console.log(phone)
     const password = req.body.password

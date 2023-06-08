@@ -6,7 +6,7 @@ const User = require('../models/bookingsModel');
 // app.set('views',__dirname + '/views');
 
 router.route('/new').get((req,res)=>{
-    return res.render("booking")
+    return res.render("newBooking")
 })
 router.route('/add').post((req, res) => {
     const mob = req.body.mobNo;
