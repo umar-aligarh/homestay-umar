@@ -4,8 +4,8 @@ mongoose.pluralize(null);
 
 const metaSchema = new mongoose.Schema({
 
-    NumberofBookings: {
-        type: String,
+    numberofBookings: {
+        type: Number,
         required: true
     }
 })

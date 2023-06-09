@@ -19,7 +19,7 @@ mongoose.connect('mongodb+srv://umarkhan:ZrTH34t9PujHNWZa@cluster0.y1jtalv.mongo
     }
 
 );
-app.use(express.static('./client/script/'));
+app.use('/static', express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
 
