@@ -1,11 +1,7 @@
 const metaModel = require('../models/metaModel');
 
 
-async function getNumberofBookings()
-{
-    let doc = await metaModel.findById('meta');
-    return doc.numberofBookings;
-}
+
 async function getAndUpdateNumberofBookings()
 {
     let doc = await metaModel.findById('meta');
@@ -18,4 +14,4 @@ async function getAndUpdateNumberofBookings()
     return numberOfBookings;
 }
 
-module.exports = {getNumberofBookings, getAndUpdateNumberofBookings}
+module.exports =  getAndUpdateNumberofBookings

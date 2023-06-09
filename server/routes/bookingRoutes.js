@@ -1,18 +1,30 @@
 const router = require('express').Router();
 const bookingsModel = require('../models/bookingsModel');
-const meta = require('../models/metaModel');
+const metaModel = require('../models/metaModel');
 
-// app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
+// app.use(bodyParser.urlencoded({limit: '5000mMb', extended: true, parameterLimit: 100000000000}));
 // app.set('view engine', 'ejs');
 // app.set('views',__dirname + '/views');
 
 router.route('/new').get((req,res)=>{
     return res.render("newBooking")
 })
+async function getAndUpdateNumberofBookings()
+{
+    let doc = await metaModel.findById('meta');
+    console.log(doc);
+    let numberOfBookings = doc.numberofBookings;
+    numberOfBookings++;
+    const filter = { _id: 'meta' };
+    const update = { numberOfBookings: numberOfBookings}
+    await metaModel.findOneAndUpdate(filter, update);
+    return numberOfBookings;
+}
 router.route('/add').post(async(req, res) => {
     console.log(req.body.select)
     
-    let numberOfBookings = await meta.getAndUpdateNumberofBookings;
+    let numberOfBookings = await getAndUpdateNumberofBookings();
+
     console.log(numberOfBookings);
     let string1 = "";
     let string2 = numberOfBookings.toString();
