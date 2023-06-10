@@ -19,13 +19,15 @@ mongoose.connect('mongodb+srv://umarkhan:ZrTH34t9PujHNWZa@cluster0.y1jtalv.mongo
     }
 
 );
+app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
+app.use(bodyParser.json())
 app.use('/static', express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', __dirname+'/views');
 
 
 
-app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
+
 app.use('/users', usersRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/rooms', roomsRouter);

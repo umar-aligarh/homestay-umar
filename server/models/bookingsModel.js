@@ -12,8 +12,9 @@ const bookingSchema = new mongoose.Schema({
     },
     roomsBooked: {
         type: [Number]
-    }
-
+    },
+    checkIn: Date,
+    checkOut: Date
 })
 
 module.exports = mongoose.model("booking",bookingSchema);

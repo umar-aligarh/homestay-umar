@@ -4,6 +4,7 @@ mongoose.pluralize(null);
 
 const metaSchema = new mongoose.Schema({
 
+    _id: String,
     numberofBookings: {
         type: Number,
         required: true
