@@ -63,12 +63,12 @@ router.route('/add').post(async(req, res) => {
 });
 
 router.route('/info').post(async(req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     let selectedRooms = req.body.selectedRooms
     let checkIn = req.body.checkIn
     let checkOut = req.body.checkOut
-    console.log(checkIn)
-    console.log(checkOut)
+    // console.log(checkIn)
+    // console.log(checkOut)
     let clash=0;
     for(let i=0;i<selectedRooms.length;i++)
     {

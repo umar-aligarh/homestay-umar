@@ -1,17 +1,16 @@
 function myfunction(myObject){
-    console.log(myObject)
+
     const checkIn = document.getElementById('checkIn')
     const checkOut = document.getElementById('checkOut')
-    console.log(checkIn);
+
     let numberofRooms = myObject.length
     const selectedRooms = [];
-    for(let i=0;i<numberofRooms;i++)
+    for(let i=0;i<numberofRooms;i++)//
     {
-        if(myObject[i].attributes.length==2)
+        if(myObject[i].attributes.length==2)//if selected
         selectedRooms.push(myObject[i].attributes[0].value)
     }
     // console.log(myObject)
-    console.log(selectedRooms);
     const objectSent={
         "selectedRooms": selectedRooms,
         "checkIn": checkIn.valueAsDate,
@@ -26,5 +25,6 @@ function myfunction(myObject){
   }
 })
   .then((response) => response.json())
+  
   .then((json) => console.log(json));
 }
