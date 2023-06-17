@@ -70,11 +70,11 @@
 <form action="/bookings/add" method="post">
 <div class="form-group">
   <label for="checkIn">CheckIn</label>
-  <input type="datetime-local" id="checkIn" name="checkIn" onchange="myfunction(this)">
+  <input type="datetime-local" id="checkIn" name="checkIn" onchange="checkBookingClash(this)">
 </div>
 <div class="form-group">
   <label for="checkOut">CheckOut</label>
-  <input type="datetime-local" id="checkOut" name="checkOut" onchange="myfunction(this)">
+  <input type="datetime-local" id="checkOut" name="checkOut" onchange="checkBookingClash(this)">
 </div>
 <div id="availibility-info"></div>
 
