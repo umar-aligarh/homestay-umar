@@ -70,20 +70,23 @@
 <form action="/bookings/add" method="post">
 <div class="form-group">
   <label for="checkIn">CheckIn</label>
-  <input type="datetime-local" id="checkIn" name="checkIn">
+  <input type="datetime-local" id="checkIn" name="checkIn" onchange="myfunction(this)">
 </div>
 <div class="form-group">
   <label for="checkOut">CheckOut</label>
-  <input type="datetime-local" id="checkOut" name="checkOut">
+  <input type="datetime-local" id="checkOut" name="checkOut" onchange="myfunction(this)">
 </div>
+<div id="availibility-info"></div>
 
-<select id='selected-options' multiple='multiple' name="select" onchange="myfunction(this)">
+<!-- <select id='selected-options' multiple='multiple' name="select" onchange="myfunction(this)">
   <option value=1>1</option>
   <option value=2>2</option>
   <option value=3>3</option>
   <option value=4>4</option>
-</select>
-<div>
+</select> -->
+<!-- <div> -->
+<br>
+<br>
 <button type="submit" class="submit-btn">Submit</button>
 </form>  
   <!-- ends -->

@@ -64,37 +64,49 @@ router.route('/add').post(async(req, res) => {
 
 router.route('/info').post(async(req, res) => {
     // console.log(req.body)
-    let selectedRooms = req.body.selectedRooms
-    let checkIn = req.body.checkIn
-    let checkOut = req.body.checkOut
-    // console.log(checkIn)
-    // console.log(checkOut)
+    // let selectedRooms = req.body.selectedRooms
+    let checkIn = req.body.checkIn;
+    let checkOut = req.body.checkOut;
+    if(checkIn===null||checkOut===null)return;
+    checkIn = Date.parse(checkIn);
+    checkOut = Date.parse(checkOut);
     let clash=0;
-    for(let i=0;i<selectedRooms.length;i++)
+    let availibilityInfo = {};
+    for(let i=1;i<=3;i++)
     {
-        let doc = await roomsModel.findById(selectedRooms[i]);
-        
+        clash=0;
+        let j = i.toString();
+        console.log(j);
+        let doc = await roomsModel.findById(j);
         let numberofActiveBookings = doc.bookings.length;
         for(let j=0;j<numberofActiveBookings;j++)
         {
-            console.log(doc.bookings[j])
+            // console.log(doc.bookings[j])
             if(!(checkOut<doc.bookings[j].checkIn||checkIn>doc.bookings[j].checkOut))
             {
+                console.log(doc);
+                let bookingsCheckout = doc.bookings[j].checkOut;
+                if(checkIn>doc.bookings[j].checkOut)
+                console.log('checkIn>doc.bookings[j].checkOut')
+                else
+                console.log('checkIn<=doc.bookings[j].checkOut')
+                console.log(typeof checkIn,bookingsCheckout)
                 clash=1;
+                console.log(doc.bookings[j]);
                 break;
             }
         }
-        if(clash==1)
-        break;
+        if(clash==0)
+        {
+            categoryName = doc.categoryName;
+            if(availibilityInfo[categoryName] === undefined)
+            availibilityInfo[categoryName] = 1;
+            else
+            (availibilityInfo[categoryName])++;
+        }
     }
-    if(clash==1)
-    {
-        console.log('clash present')
-    }
-    else
-    {
-        console.log('clash not present')
-    }
+    console.log(availibilityInfo)
+    res.send(availibilityInfo);
 });
 
 module.exports = router;

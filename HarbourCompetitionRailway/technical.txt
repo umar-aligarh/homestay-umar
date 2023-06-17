@@ -1,19 +1,4 @@
-Database:
-cloudways
-  email: uk.umarkhan1999@gmail.com
-  pass: 
+inside /addbooking:
 
 
-https://webwhiteboard.com/board/9SQFcTXS5Mo9QVCFcnqucunxwlCDMgjV/
 
-https://webwhiteboard.com/board/ZTFDOT9Pxtjc6xVSpVCFkE3UF066pAG9/
-
-mohdhuzam002@gmail.com
-
-
-ZrTH34t9PujHNWZa
-
-
- // basic html 
- // REST APIs
- // branching in git 
