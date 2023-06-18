@@ -70,25 +70,20 @@
 <form action="/bookings/add" method="post">
 <div class="form-group">
   <label for="checkIn">CheckIn</label>
-  <input type="datetime-local" id="checkIn" name="checkIn" onchange="checkBookingClash(this)">
+  <input type="date" id="checkIn" name="checkIn" onchange="checkBookingClash(this)">
 </div>
 <div class="form-group">
   <label for="checkOut">CheckOut</label>
-  <input type="datetime-local" id="checkOut" name="checkOut" onchange="checkBookingClash(this)">
+  <input type="date" id="checkOut" name="checkOut" onchange="checkBookingClash(this)">
 </div>
 <div id="availibility-info"></div>
-
-<!-- <select id='selected-options' multiple='multiple' name="select" onchange="myfunction(this)">
-  <option value=1>1</option>
-  <option value=2>2</option>
-  <option value=3>3</option>
-  <option value=4>4</option>
-</select> -->
-<!-- <div> -->
 <br>
+<br>
+<div id="amount"></div> 
 <br>
 <button type="submit" class="submit-btn">Submit</button>
-</form>  
+</form>
+ 
   <!-- ends -->
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>

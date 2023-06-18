@@ -14,7 +14,8 @@ const bookingSchema = new mongoose.Schema({
         type: [Number]
     },
     checkIn: Date,
-    checkOut: Date
+    checkOut: Date,
+    isBookingCompelete: Boolean
 })
 
 module.exports = mongoose.model("booking",bookingSchema);

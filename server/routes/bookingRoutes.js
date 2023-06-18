@@ -109,5 +109,19 @@ router.route('/info').post(async(req, res) => {
     res.send(availibilityInfo);
 });
 
+router.route('/totalamount').post(async(req, res) => {
+    selectedCategories = req.body;
+    let totalAmount = 0;
+    for(const categoryName in selectedCategories)
+    {
+        const filter = { categoryName: categoryName };
+        let doc = await roomsModel.findOne(filter);
+        totalAmount += (doc.amount)*selectedCategories[categoryName];
+    }
+    let totalAmountObj={};
+    totalAmountObj.totalAmount=totalAmount;
+    res.send(totalAmountObj);
+});
+
 module.exports = router;
 
