@@ -7,9 +7,6 @@ const metaModel = require('../models/metaModel');
 // app.set('view engine', 'ejs');
 // app.set('views',__dirname + '/views');
 
-router.route('/new').get((req,res)=>{
-    return res.render("newBooking")
-})
 async function getAndUpdateNumberofBookings()
 {
     let doc = await metaModel.findById('meta');
@@ -23,11 +20,22 @@ async function getAndUpdateNumberofBookings()
     await metaModel.findOneAndUpdate(filter, update);
     return numberOfBookings;
 }
+
+router.route('/new').get((req,res)=>{
+    return res.render("newBooking")
+})
+
+router.route('/summary').get((req,res)=>{
+
+    return res.render("bookingSummary")
+})
+
 router.route('/add').post(async(req, res) => {
-    console.log(req.body.select)
-    let selectedRooms = req.body.select;
+    console.log(req.body)
+    // let selectedRooms = req.body.select;
     let checkIn = req.body.checkIn;
     let checkOut = req.body.checkOut;
+    let categories = req.body.categories;
     let numberOfBookings = await getAndUpdateNumberofBookings();
 
     console.log(numberOfBookings);
@@ -35,30 +43,47 @@ router.route('/add').post(async(req, res) => {
     let string2 = numberOfBookings.toString();
     for(let i=1; i<=(5-string2.length); i++)string1+='0';
     let bookingId = string1+string2;
-    const newBooking = new bookingsModel({
-        _id:bookingId,accountId:'1234',
-        roomsBooked: selectedRooms,
-        checkIn: checkIn,
-        checkOut: checkOut
-    })
-    await newBooking.save();
 
-    for(let i=0;i<selectedRooms.length;i++)
+    let roomsId=[];
+    console.log(categories);
+    for(category in categories)
     {
-        let doc = await roomsModel.findById(selectedRooms[i]);
-        doc.bookings.push({
-            "bookingId": bookingId,
-            "checkIn": checkIn,
-            "checkOut": checkOut
-        })
-        const filter = { _id: selectedRooms[i] };
-        const update = { "$set": {
-        bookings: doc.bookings
+        let qty = categories[category].qty;
+        for(let i=0;i<qty;i++)
+        {
+            roomsId.push(categories[category].roomsId[i]);
         }
-        }
-        await roomsModel.findOneAndUpdate(filter, update);
     }
-    res.send('done');
+
+
+    const newBooking = new bookingsModel({
+        _id:bookingId,
+        accountId:'1234',
+        roomsBooked: roomsId,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        isBookingCompelete: false
+    })
+    console.log(newBooking)
+    let response = await newBooking.save();
+    console.log(response);
+    res.redirect(`summary?id=${response._id}`);
+    // for(let i=0;i<selectedRooms.length;i++)
+    // {
+    //     let doc = await roomsModel.findById(selectedRooms[i]);
+    //     doc.bookings.push({
+    //         "bookingId": bookingId,
+    //         "checkIn": checkIn,
+    //         "checkOut": checkOut
+    //     })
+    //     const filter = { _id: selectedRooms[i] };
+    //     const update = { "$set": {
+    //     bookings: doc.bookings
+    //     }
+    //     }
+    //     await roomsModel.findOneAndUpdate(filter, update);
+    // }
+    
 
 });
 
@@ -67,32 +92,30 @@ router.route('/info').post(async(req, res) => {
     // let selectedRooms = req.body.selectedRooms
     let checkIn = req.body.checkIn;
     let checkOut = req.body.checkOut;
-    if(checkIn===null||checkOut===null)return;
     checkIn = Date.parse(checkIn);
     checkOut = Date.parse(checkOut);
     let clash=0;
     let availibilityInfo = {};
-    for(let i=1;i<=3;i++)
+    for(let i=1;i<=3;i++)//for each room
     {
         clash=0;
         let j = i.toString();
-        console.log(j);
         let doc = await roomsModel.findById(j);
         let numberofActiveBookings = doc.bookings.length;
-        for(let j=0;j<numberofActiveBookings;j++)
+        for(let j=0;j<numberofActiveBookings;j++)//iterating through bookings of a room
         {
             // console.log(doc.bookings[j])
             if(!(checkOut<doc.bookings[j].checkIn||checkIn>doc.bookings[j].checkOut))
             {
-                console.log(doc);
-                let bookingsCheckout = doc.bookings[j].checkOut;
-                if(checkIn>doc.bookings[j].checkOut)
-                console.log('checkIn>doc.bookings[j].checkOut')
-                else
-                console.log('checkIn<=doc.bookings[j].checkOut')
-                console.log(typeof checkIn,bookingsCheckout)
+                // console.log(doc);
+                // let bookingsCheckout = doc.bookings[j].checkOut;
+                // if(checkIn>doc.bookings[j].checkOut)
+                // console.log('checkIn>doc.bookings[j].checkOut')
+                // else
+                // console.log('checkIn<=doc.bookings[j].checkOut')
+                // console.log(typeof checkIn,bookingsCheckout)
                 clash=1;
-                console.log(doc.bookings[j]);
+                // console.log(doc.bookings[j]);
                 break;
             }
         }
@@ -100,9 +123,17 @@ router.route('/info').post(async(req, res) => {
         {
             categoryName = doc.categoryName;
             if(availibilityInfo[categoryName] === undefined)
-            availibilityInfo[categoryName] = 1;
+            {
+                availibilityInfo[categoryName] = {
+                    qty:1,
+                    roomsId:[j]
+                };
+            }
             else
-            (availibilityInfo[categoryName])++;
+            {
+                availibilityInfo[categoryName].qty++;
+                availibilityInfo[categoryName].roomsId.push(j);
+            }
         }
     }
     console.log(availibilityInfo)
@@ -116,7 +147,7 @@ router.route('/totalamount').post(async(req, res) => {
     {
         const filter = { categoryName: categoryName };
         let doc = await roomsModel.findOne(filter);
-        totalAmount += (doc.amount)*selectedCategories[categoryName];
+        totalAmount += (doc.amount)*(selectedCategories[categoryName].qty);
     }
     let totalAmountObj={};
     totalAmountObj.totalAmount=totalAmount;
