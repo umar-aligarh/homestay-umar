@@ -1,3 +1,4 @@
+
 let selectedCategoriesGlobal = {};
 //format of selectedCategoriesGlobal:
 //{
@@ -118,7 +119,12 @@ function postBooking()
     "Content-type": "application/json; charset=UTF-8"
   }
   })
-  .then()
+  .then((response)=>{
+    response.json()
+    .then((responseJson)=>{
+      document.location.href = `/bookings/summary?id=${responseJson._id}`
+    })
+  })
   
 
 

@@ -25,9 +25,11 @@ router.route('/new').get((req,res)=>{
     return res.render("newBooking")
 })
 
-router.route('/summary').get((req,res)=>{
+router.route('/summary').get(async(req,res)=>{
+    let doc = await bookingsModel.findById(req.query.id);
+    console.log(doc)
 
-    return res.render("bookingSummary")
+    return res.render("bookingSummary",{data: doc})
 })
 
 router.route('/add').post(async(req, res) => {
@@ -67,7 +69,7 @@ router.route('/add').post(async(req, res) => {
     console.log(newBooking)
     let response = await newBooking.save();
     console.log(response);
-    res.redirect(`summary?id=${response._id}`);
+    res.send(response);
     // for(let i=0;i<selectedRooms.length;i++)
     // {
     //     let doc = await roomsModel.findById(selectedRooms[i]);
