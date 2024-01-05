@@ -398,7 +398,7 @@ a:focus {
   background-color: black;
 }
 
-.slider_section .carousel-indicators {
+/* .slider_section .carousel-indicators {
   position: unset;
   margin: 0;
   -webkit-box-pack: center;
@@ -408,21 +408,21 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 45px;
-}
+} */
 
-.slider_section .carousel-indicators li {
+/* .slider_section .carousel-indicators li {
   background-color: #ffffff;
   width: 12px;
   height: 12px;
   border-radius: 100%;
   opacity: 1;
-}
+} */
 
-.slider_section .carousel-indicators li.active {
+/* .slider_section .carousel-indicators li.active {
   width: 20px;
   height: 20px;
   background-color: #0a97b0;
-}
+} */
 
 .service_section {
   position: relative;
@@ -565,8 +565,8 @@ a:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(37, 37, 37, 0.95)), to(rgba(37, 37, 37, 0.55)));
-  background: linear-gradient(to right, rgba(37, 37, 37, 0.95), rgba(37, 37, 37, 0.55));
+  background: -webkit-gradient(linear, left top, right top, from(rgba(37, 37, 37, 0)), to(rgba(37, 37, 37, 0)));
+  background: linear-gradient(to right, rgba(37, 37, 37, 0.829), rgba(37, 37, 37, 0.103));
 }
 
 .track_section p {
