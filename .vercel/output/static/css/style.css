@@ -286,6 +286,8 @@ a:focus {
 
 /*end header section*/
 /* slider section */
+
+
 .slider_section {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -295,7 +297,7 @@ a:focus {
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
+          align-items: stretch;
   position: relative;
 }
 
@@ -310,8 +312,8 @@ a:focus {
 }
 
 .slider_section .slider_bg_box img {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   min-width: 100%;
   min-height: 100%;
 }
@@ -323,8 +325,8 @@ a:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(37, 37, 37, 0.9)), to(rgba(37, 37, 37, 0.7)));
-  background: linear-gradient(to right, rgba(37, 37, 37, 0.9), rgba(37, 37, 37, 0.7));
+  /* background: -webkit-gradient(linear, left top, right top, from(rgba(37, 37, 37, 0.9)), to(rgba(37, 37, 37, 0.7)));
+  background: linear-gradient(to right, rgba(37, 37, 37, 0.9), rgba(37, 37, 37, 0.7)); */
 }
 
 .slider_section .row {
@@ -334,6 +336,7 @@ a:focus {
 }
 
 .slider_section #customCarousel1 {
+  height: 58vw;
   width: 100%;
   position: unset;
 }
@@ -398,7 +401,7 @@ a:focus {
   background-color: black;
 }
 
-/* .slider_section .carousel-indicators {
+.slider_section .carousel-indicators {
   position: unset;
   margin: 0;
   -webkit-box-pack: center;
@@ -408,21 +411,21 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 45px;
-} */
+}
 
-/* .slider_section .carousel-indicators li {
+.slider_section .carousel-indicators li {
   background-color: #ffffff;
   width: 12px;
   height: 12px;
   border-radius: 100%;
   opacity: 1;
-} */
+}
 
-/* .slider_section .carousel-indicators li.active {
+.slider_section .carousel-indicators li.active {
   width: 20px;
   height: 20px;
   background-color: #0a97b0;
-} */
+}
 
 .service_section {
   position: relative;
@@ -965,5 +968,154 @@ a:focus {
 
 .footer_section p a {
   color: inherit;
+}
+
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+.card_image {
+  position: relative;
+  max-height: 250px;
+}
+
+.card_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card_price {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 45px;
+  border-radius: 0.25rem;
+  background-color: #c89b3f;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card_price span {
+  font-size: 12px;
+  margin-top: -2px;
+}
+
+.note {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  border-radius: 0.25rem;
+  background-color: #c89b3f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  position: relative;
+  padding: 16px 12px 32px 24px;
+  margin: 16px 8px 8px 0;
+  max-height: 290px;
+  overflow-y: scroll;
+}
+
+.card_content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card_content::-webkit-scrollbar-track {
+  box-shadow: 0;
+  border-radius: 0;
+}
+
+.card_content::-webkit-scrollbar-thumb {
+  background: #c89b3f;
+  border-radius: 15px;
+}
+
+.card_title {
+  position: relative;
+  margin: 0 0 24px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card_title::after {
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c89b3f;
+  content: "";
+}
+
+hr {
+  margin: 24px auto;
+  width: 50px;
+  border-top: 2px solid #c89b3f;
+}
+
+.card_text p {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card_text p:last-child {
+  margin: 0;
 }
 /*# sourceMappingURL=style.css.map */
