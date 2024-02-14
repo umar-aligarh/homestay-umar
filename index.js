@@ -20,7 +20,9 @@ let port = process.env.PORT||5000
 app.get("/",(req,res)=>{
     return res.sendFile(path.join(__dirname,"static/index.html"));
 })
-
+app.get("/",(req,res)=>{
+    return res.sendFile(path.join(__dirname,"static/index.html"));
+})
 // app.get("/images/about-img.jpg",(req,res)=>{
 //     console.log('umar');
 //     return res.sendFile(path.join(__dirname,"images/about-img.jpg"));

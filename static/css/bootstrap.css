@@ -6224,6 +6224,7 @@ a.close.disabled {
 
 .carousel-inner {
   position: relative;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 }
@@ -6238,6 +6239,7 @@ a.close.disabled {
   position: relative;
   display: none;
   float: left;
+  height: 100%;
   width: 100%;
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
