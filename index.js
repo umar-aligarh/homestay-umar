@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.urlencoded({limit: '5000mb', extended: true, parameterLimit: 100000000000}));
 app.use(bodyParser.json())
 app.use(express.static('views/static'));
-app.set('views', path.join(__dirname, 'views'))
+// app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 // app.set('/images', __dirname+'/static');
 
@@ -34,8 +34,8 @@ app.get("/",(req,res)=>{
     let jsonData = JSON.parse(data);
     price0=jsonData.price[0];    
     price1=jsonData.price[1];   
-    return res.render("static/index",{p1:price0,p2:price1}); 
-    });
+    return res.render("./static/index.ejs",{p1:price0,p2:price1}); 
+});
     
 })
 app.get("/changeprice",(req,res)=>{
