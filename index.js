@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 app.use(express.static('views/static'));
 // app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
+app.set('views','./views')
 // app.set('/images', __dirname+'/static');
 
 // app.use('/public', express.static('public'));
