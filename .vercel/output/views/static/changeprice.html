@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons with Input Fields</title>
+</head>
+<body>
+    <h1>Buttons with Input Fields</h1>
+    
+    <div>
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" name="input1">
+        <button id="button1">Button 1</button>
+    </div>
+
+    <div>
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" name="input2">
+        <button id="button2">Button 2</button>
+    </div>
+
+    <script>
+        document.getElementById('button1').addEventListener('click', function() {
+            let input1Value = document.getElementById('input1').value;
+            console.log(window.location.href);
+            let path = window.location.href+'/click';
+            console.log(path);
+            axios.get('/changepriceclick',{ params: { p:input1Value,cat:0 }}).then(
+        (response) => {
+            var result = response.data;
+            console.log(result);
+        },
+        (error) => {
+            console.log(error);
+        });
+});
+
+        document.getElementById('button2').addEventListener('click', function() {
+            let input2Value = document.getElementById('input2').value;
+            console.log(window.location.href);
+            let path = window.location.href+'/click';
+            console.log(path);
+            axios.get('/changepriceclick',{ params: { p:input2Value,cat:1} }).then(
+        (response) => {
+            var result = response.data;
+            console.log(result);
+        },
+        (error) => {
+            console.log(error);
+        });
+});
+    </script>
+</body>
+</html>
